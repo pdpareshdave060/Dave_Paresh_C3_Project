@@ -4,6 +4,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -69,4 +72,18 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void when_selecting_item_from_menu_total_value_to_be_displayed_for_the_selected_items(){
+
+        restaurant =new Restaurant("Amelie's cafe","Chennai",LocalTime.parse("10:30:00"),LocalTime.parse("22:00:00"));
+        restaurant.addToMenu("Chowmein",150);
+        restaurant.addToMenu("Noodles",140);
+        restaurant.addToMenu("Fried Rice",130);
+        List<Item> selectMenu = new ArrayList<Item>();
+        selectMenu.add(restaurant.getMenu().get(0));
+        selectMenu.add(restaurant.getMenu().get(2));
+        int totalValue = restaurant.getTotalValue(selectMenu);
+        assertEquals(280,totalValue);
+    }
 }

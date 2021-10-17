@@ -63,4 +63,7 @@ public class Restaurant {
         return name;
     }
 
+    public int getTotalValue(List<Item> selectMenu) {
+        return 0;
+    }
 }
