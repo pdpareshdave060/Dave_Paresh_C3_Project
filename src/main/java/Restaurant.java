@@ -64,6 +64,10 @@ public class Restaurant {
     }
 
     public int getTotalValue(List<Item> selectMenu) {
-        return 0;
+        int totalVal = 0;
+        for(Item item: selectMenu){
+            totalVal = totalVal+item.getPrice();
+        }
+        return totalVal;
     }
 }
